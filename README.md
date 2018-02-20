@@ -1,9 +1,16 @@
 Inital test for Spring and webcrawler
 
+PLEASE RUN 
+$ mvn spring-boot:run
+
+PLEASE TRY
+http://localhost:8080/links?url=google.com
+
 A Java-based rest service with one endpoint (/links). 
 The endpoint must take as input a single http url and locate all the hyperlinks present on the page identified by the input url. 
 The reponse is a JSON list of founded urls.
-The service will be stateless, without database. 
+The service will be stateless, without database.
+The project use Spring Boot, JUnit, crawler4j, Java 8, Java EE DI  
 
 1. REST service to listen
 2. Handle request, validate and get url from the request
