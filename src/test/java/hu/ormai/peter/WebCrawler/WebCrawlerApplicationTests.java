@@ -1,7 +1,6 @@
 package hu.ormai.peter.WebCrawler;
 
 import edu.uci.ics.crawler4j.url.WebURL;
-import org.hibernate.validator.internal.constraintvalidators.hv.URLValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +16,8 @@ import java.util.Set;
 @SpringBootTest
 public class WebCrawlerApplicationTests {
 
+	String[] testURLs = {"http://google.com","https://stackoverflow.com"}; 
+	
 	@Test
 	public void whenURLSetGivenThenAllURLSReturnedInStringList() {
 		CrawlerResponseHandlerService service = new CrawlerResponseHandlerImpl();
@@ -24,16 +25,15 @@ public class WebCrawlerApplicationTests {
 	}
 
 	private Set<WebURL> getTestSet()  {
-		return new LinkedHashSet<>(Arrays.asList(urlFactory("http://google.com"), urlFactory("https://stackoverflow.com")));
+		return new LinkedHashSet<>(Arrays.asList(urlFactory(testURLs[0]), urlFactory(testURLs[1])));
 	}
 	
 	private List<String> getTestList()  {
-		return new ArrayList<>(Arrays.asList("http://google.com","https://stackoverflow.com"));
+		return new ArrayList<>(Arrays.asList(testURLs));
 	}
 	
 	private WebURL urlFactory(String urlStr) {
-		URLValidator urlv = new URLValidator();
-		if (urlStr == null || urlStr.isEmpty() || !urlv.isValid(urlStr, null)) {
+		if (urlStr == null || urlStr.isEmpty()) {
 			return null;
 		}
 		WebURL url = new WebURL();
@@ -42,6 +42,6 @@ public class WebCrawlerApplicationTests {
 	}
 	
 	private boolean checkResponse(List<String> resp) {
-		return getTestList().stream().filter(s-> resp.contains(s)).count() == 0;
+		return getTestList().containsAll(resp);
 	}
 }
