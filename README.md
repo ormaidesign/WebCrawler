@@ -13,4 +13,10 @@ The service will be stateless, without database.
 6. Response for request convert List<String> to JSON 
 
 
+TESTS
+The code will use a lot of frameworks, the only logic is the convert Set<WebURL> to List<String>.
+
+whenURLSetGivenThenAllURLSReturnedInStringList // No comment ;)
+
+
 
