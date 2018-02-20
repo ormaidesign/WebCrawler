@@ -21,7 +21,7 @@ public class WebCrawlerApplicationTests {
 	@Test
 	public void whenURLSetGivenThenAllURLSReturnedInStringList() {
 		CrawlerResponseHandlerService service = new CrawlerResponseHandlerImpl();
-		assert(checkResponse(service.toListOfUrlStrings(getTestSet())));
+		assert(checkResponse(service.toListOfUrlStrings(getTestSet())  ) );
 	}
 
 	private Set<WebURL> getTestSet()  {
@@ -44,4 +44,20 @@ public class WebCrawlerApplicationTests {
 	private boolean checkResponse(List<String> resp) {
 		return getTestList().containsAll(resp);
 	}
+	
+// TODO Mock CDI
+	
+//	@Test
+//	public void givenGoogle_whenUrlsRetrieved_thenPrivacyUrlIsReceived() throws ClientProtocolException, IOException {
+//		// Given
+//		WebCrawlerApplication a = new WebCrawlerApplication();
+//		String URL = "google.com";
+//		
+//		// When
+//		List<String> links = a.links(URL);
+//		
+//		// Then
+//		assert(links.contains("http://www.google.hu/intl/hu/policies/privacy/"));
+//	
+//	}
 }

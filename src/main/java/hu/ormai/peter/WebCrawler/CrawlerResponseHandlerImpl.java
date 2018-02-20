@@ -8,9 +8,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+
 public class CrawlerResponseHandlerImpl implements CrawlerResponseHandlerService {
+	 @Inject private Logger logger;
+	
 	public List<String> toListOfUrlStrings(Set<WebURL> urlSet) {
 		if (urlSet == null)
 			return null;
